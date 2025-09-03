@@ -29,9 +29,5 @@ describe("countReducer",() =>{
         const result = countReducer(testState2,testAction6);
         expect(result.count).toBe(0);
     });;
-    // it("Returns default state ", () =>{
-    //     const result = countReducer(testState1,{type:'DEFAULT'});
-    //     expect(result.count).toBe(0);
-    // });
 
 });

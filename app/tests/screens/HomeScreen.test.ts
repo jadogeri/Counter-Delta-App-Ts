@@ -1,5 +1,5 @@
-import { ResetButton } from "../../src/components";
-import Home from "../../src/screens/Home/HomeScreen";
+// import { ResetButton } from "../../src/components/index";
+import HomeScreen from "../../src/screens/Home/HomeScreen";
 import { render, fireEvent, screen } from "@testing-library/react-native";
 
 describe("ResetButton",() =>{

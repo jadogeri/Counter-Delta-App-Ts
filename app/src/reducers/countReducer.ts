@@ -13,10 +13,12 @@ export enum CounterActionType {
   SET_DELTA = 'SET_DELTA',
   RESET_DELTA = 'RESET_DELTA',
   RESET_COUNT = 'RESET_COUNT',
+  DEFAULT = 'DEFAULT'
 
 }
 
 // 3. Define the Action Interface
+
 export interface SetNumberAction {
   type: CounterActionType.SET_NUMBER;
   payload: number;
@@ -38,7 +40,7 @@ export interface ResetCountAction {
 }
 
 // Union type for all possible actions
-export type CounterAction = SetDeltaAction | SetNumberAction | ResetDeltaAction | ResetCountAction;
+export type CounterAction = SetDeltaAction | SetNumberAction | ResetDeltaAction | ResetCountAction ;
 
 // 4. Define the Reducer Function
 const reducer = (state: CounterState, action: CounterAction): CounterState => {
@@ -51,8 +53,6 @@ const reducer = (state: CounterState, action: CounterAction): CounterState => {
         return  {...state , delta : 0};
       case CounterActionType.RESET_COUNT: 
         return  {...state , count : 0};
-      default :
-        return state;
   }
 };
 
