@@ -1,7 +1,7 @@
 import { View} from 'react-native';
 import { Text } from 'react-native-paper';
 import React,{useReducer} from 'react'
-import { ButtonIcon, CountIcon, DeltaButton, ResetButton  } from '../../components/components';
+import { ButtonIcon, CountIcon, DeltaButton, ResetButton  } from '../../components';
 import styles from './HomeStyles';
 import { StatusBar } from 'expo-status-bar';
 import reducer, { CounterActionType } from '../../reducers/countReducer';

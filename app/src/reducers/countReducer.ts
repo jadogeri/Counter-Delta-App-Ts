@@ -1,6 +1,6 @@
 
 // 1. Define the State Type
-interface CounterState {
+export interface CounterState {
   count: number;
   delta: number;
   max: number;
@@ -31,17 +31,14 @@ export interface SetDeltaAction {
 
 export interface ResetDeltaAction {
   type: CounterActionType.RESET_DELTA;
-  payload: number;
-
 }
 
 export interface ResetCountAction {
   type: CounterActionType.RESET_COUNT;
-  payload: number;
 }
 
 // Union type for all possible actions
-type CounterAction = SetDeltaAction | SetNumberAction | ResetDeltaAction | ResetCountAction;
+export type CounterAction = SetDeltaAction | SetNumberAction | ResetDeltaAction | ResetCountAction;
 
 // 4. Define the Reducer Function
 const reducer = (state: CounterState, action: CounterAction): CounterState => {
