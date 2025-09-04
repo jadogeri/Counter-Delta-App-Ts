@@ -1,4 +1,4 @@
-import { CounterActionType, CounterState, DefaultAction, ResetCountAction, ResetDeltaAction, SetDeltaAction, SetNumberAction } from "../../src/reducers/countReducer";
+import { CounterActionType, CounterState, ResetCountAction, ResetDeltaAction, SetDeltaAction, SetNumberAction } from "../../src/reducers/countReducer";
 
 export const testState1 :CounterState = {count : 0, delta : 0, min: 0, max: 0 };
 export const testState2 : CounterState = {count : 10, delta : 10, min: 0, max: 0 }

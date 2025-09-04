@@ -1,10 +1,10 @@
-// import { ResetButton } from "../../src/components/index";
-import HomeScreen from "../../src/screens/Home/HomeScreen";
+import React from "react"
+import Home from "../../src/screens/Home/HomeScreen";
 import { render, fireEvent, screen } from "@testing-library/react-native";
 
 describe("ResetButton",() =>{
     it("calls first reset onPress function when button is pressed", () =>{
-        render(<Home />)
+        render(<Home /> )
         const pressMeButton = screen.getByTestId('reset1');
         fireEvent.press(pressMeButton)
 
@@ -42,3 +42,4 @@ describe("ResetButton",() =>{
     })
 
 });
+

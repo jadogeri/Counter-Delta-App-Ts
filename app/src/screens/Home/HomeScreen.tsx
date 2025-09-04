@@ -36,9 +36,9 @@ const Home = () => {
 
       <View  style={styles.two_reset_button_container}>
       <ResetButton  title="RESET COUNT" id='reset1'
-                    pressHandler={()=>{dispatch({type:CounterActionType.RESET_COUNT,payload : -1 * state.delta})}} />
+                    pressHandler={()=>{dispatch({type:CounterActionType.RESET_COUNT})}} />
       <ResetButton  title="RESET DELTA" id='reset2'
-                    pressHandler={()=>{dispatch({type:CounterActionType.RESET_DELTA,payload :state.delta})}} />
+                    pressHandler={()=>{dispatch({type:CounterActionType.RESET_DELTA})}} />
       </View>
     </View>
 
