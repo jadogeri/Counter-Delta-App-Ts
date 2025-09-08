@@ -10,6 +10,17 @@ type DeltaButtonProp ={
   pressHandler: ((e: GestureResponderEvent) => void) | undefined,
   id: string
 }
+/**
+ * Renders a customizable button with an icon and text.
+ * 
+ * @param {Object} params - The parameters for the button.
+ * @param {string} params.sign - The text to display on the button.
+ * @param {string} params.color - The background color of the button.
+ * @param {function} params.pressHandler - The function to call when the button is pressed.
+ * @param {string} params.id - The test ID for the button.
+ * @returns {JSX.Element} The rendered button component.
+ * @throws {Error} Throws an error if pressHandler is not a function.
+ */
 const DeltaButton : React.FC<DeltaButtonProp>= ({sign,color,pressHandler,id}) => {
   return (
     
