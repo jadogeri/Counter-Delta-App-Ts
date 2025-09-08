@@ -68,7 +68,7 @@ https://github.com/jadogeri/counter-delta-app-ts.git
 
 2 Navigate to project folder counter-delta-app-ts/app.
 
-3 Enter npmrun test to run tests.
+3 Enter npm run test to run tests.
 
 ```bash
   npm run test
