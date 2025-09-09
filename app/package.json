@@ -12,6 +12,8 @@
   },
   "jest": {
     "preset": "jest-expo"
+    
+
   },
   "dependencies": {
     "@types/react-native-vector-icons": "^6.4.18",
@@ -19,13 +21,17 @@
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "expo": "~53.0.22",
     "expo-status-bar": "~2.2.3",
-    "react": "19.0.0",
+    "react": "19.1.1",
+    "react-dom": "^19.1.1",
     "react-native": "0.79.6",
     "react-native-paper": "^5.14.5",
     "react-native-safe-area-context": "^5.6.1",
     "react-native-vector-icons": "^10.3.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/react-native": "^13.3.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",

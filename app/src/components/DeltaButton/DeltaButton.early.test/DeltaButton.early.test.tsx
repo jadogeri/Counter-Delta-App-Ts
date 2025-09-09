@@ -3,7 +3,7 @@ import React from 'react';
 import DeltaButton from '../DeltaButton';
 
 // DeltaButton.test.tsx
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import "@testing-library/jest-dom";
 
 // DeltaButton.test.tsx
@@ -65,13 +65,13 @@ describe('DeltaButton() DeltaButton method', () => {
       );
       // Button should be rendered with correct testID
       const button = screen.getByTestId(id);
-      expect(button).toBeInTheDocument();
+      expect(button).toBeVisible();
       // Delta icon should be rendered
-      expect(screen.getByTestId('mock-delta-icon')).toBeInTheDocument();
+      expect(screen.getByTestId('mock-delta-icon')).toBeVisible();
       // Sign should be rendered
-      expect(screen.getByText(sign)).toBeInTheDocument();
+      expect(screen.getByText(sign)).toBeVisible();
       // Button should have correct style
-      expect(button).toHaveStyle(`background-color: ${color}`);
+      expect(button.props.style).toHaveProperty(`background-color: ${color}`);
     });
 
     it('calls pressHandler when button is clicked', () => {
@@ -107,9 +107,9 @@ describe('DeltaButton() DeltaButton method', () => {
           id={id}
         />
       );
-      expect(screen.getByText(sign)).toBeInTheDocument();
+      expect(screen.getByText(sign)).toBeVisible();
       const button = screen.getByTestId(id);
-      expect(button).toHaveStyle(`background-color: ${color}`);
+      expect(button.props.style.backgroundColor).toBe(color);
     });
 
     it('passes the id prop as testID to the Button', () => {

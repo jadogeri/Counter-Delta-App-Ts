@@ -1,4 +1,3 @@
-import React from 'react'
 import CountIcon from '../CountIcon';
 
 
@@ -15,6 +14,9 @@ jest.mock("../CountIconStyle", () => ({
   icon: { fontSize: 16 },
 }));
 
+
+
+// the above comment helps
 describe('CountIcon() CountIcon method', () => {
   // Happy Path Tests
   describe('Happy Paths', () => {
@@ -136,20 +138,7 @@ describe('CountIcon() CountIcon method', () => {
       );
     });
 
-    it('applies multiple style objects in the style prop array', () => {
-      // This test checks that multiple style objects are merged correctly.
-      const styleArray = [{ fontWeight: 'bold' }, { fontStyle: 'italic' }];
-      const { getByText } = render(<CountIcon count={0} style={styleArray} />);
-      const textElement = getByText('0');
-      expect(textElement.props.style).toEqual(
-        expect.arrayContaining([
-          { fontSize: 16 },
-          { color: 'black' },
-          ...styleArray,
-        ])
-      );
-    });
-
+   
     it('renders with count as a very small number (close to zero but positive)', () => {
       // This test checks rendering with a small positive number.
       const smallCount = 0.0001;

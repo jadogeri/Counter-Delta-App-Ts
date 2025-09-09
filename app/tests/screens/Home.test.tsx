@@ -1,4 +1,3 @@
-import React from "react"
 import Home from "../../src/screens/Home/HomeScreen";
 import { render, fireEvent, screen, act } from "@testing-library/react-native";
 

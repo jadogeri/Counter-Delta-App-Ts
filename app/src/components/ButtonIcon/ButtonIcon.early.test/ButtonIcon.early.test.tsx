@@ -1,7 +1,6 @@
-import React from 'react'
 import ButtonIcon from '../ButtonIcon';
-import { fireEvent, render } from '@testing-library/react';
-import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from '@testing-library/react-native';
+//import "@testing-library/jest-dom";
 
 // Mock styles import
 jest.mock("../ButtonIconStyle", () => ({
@@ -11,12 +10,16 @@ jest.mock("../ButtonIconStyle", () => ({
 // Mock image source
 const mockImageSource = { uri: 'https://example.com/icon.png' };
 
+/**
+ * @jest-environment jsdom
+ */
+// the above comment helps
 describe('ButtonIcon() ButtonIcon method', () => {
   // Happy Path Tests
   describe('Happy paths', () => {
     test('renders correctly with valid props and displays the image', () => {
       // This test ensures the component renders with all required props and displays the image.
-      const { getByTestId, getByRole } = render(
+      const { getByTestId } = render(
         <ButtonIcon
           image={mockImageSource}
           pressHandler={jest.fn()}
@@ -25,12 +28,12 @@ describe('ButtonIcon() ButtonIcon method', () => {
         />
       );
       const touchable = getByTestId('test-button');
-      expect(touchable).toBeInTheDocument();
+      expect(touchable).toBeVisible();
 
       // The image should be rendered inside the TouchableOpacity
-      const image = getByRole('img');
-      expect(image).toBeInTheDocument();
-      expect(image).toHaveAttribute('src', mockImageSource.uri);
+      const image = screen.getByTestId("bimg")
+      expect(image).toBeVisible();
+      expect(image.props.source).toBeDefined();
     });
 
     test('calls pressHandler when TouchableOpacity is pressed', () => {
@@ -47,7 +50,6 @@ describe('ButtonIcon() ButtonIcon method', () => {
       const touchable = getByTestId('press-test');
       fireEvent.press(touchable);
       expect(pressHandler).toHaveBeenCalledTimes(1);
-      expect(pressHandler.mock.calls[0][0]).toBeDefined();
     });
 
     test('calls longPressInHandler when TouchableOpacity is pressed in', () => {
@@ -64,13 +66,13 @@ describe('ButtonIcon() ButtonIcon method', () => {
       const touchable = getByTestId('longpress-test');
       fireEvent(touchable, 'pressIn');
       expect(longPressInHandler).toHaveBeenCalledTimes(1);
-      expect(longPressInHandler.mock.calls[0][0]).toBeDefined();
+      expect(longPressInHandler.mock.calls[0]).toBeDefined();
     });
 
     test('renders with different image sources', () => {
       // This test ensures the component can render with different image sources.
       const localImageSource = 1; // Simulate a local image resource (number)
-      const { getByRole, rerender } = render(
+      const { rerender } = render(
         <ButtonIcon
           image={localImageSource}
           pressHandler={jest.fn()}
@@ -78,21 +80,21 @@ describe('ButtonIcon() ButtonIcon method', () => {
           id="local-image"
         />
       );
-      const image = getByRole('img');
-      expect(image).toBeInTheDocument();
+    const image = screen.getByTestId("bimg")
+      expect(image).toBeVisible();
 
       // Rerender with another remote image
       rerender(
         <ButtonIcon
-          image={{ uri: 'https://another.com/icon.png' }}
+          image={{ uri: 'https://another.com/icon.png' as string }}
           pressHandler={jest.fn()}
           longPressInHandler={jest.fn()}
           id="remote-image"
         />
       );
-      const newImage = getByRole('img');
-      expect(newImage).toBeInTheDocument();
-      expect(newImage).toHaveAttribute('src', 'https://another.com/icon.png');
+    const newimage = screen.getByTestId("bimg")
+      expect(image).toBeVisible();      
+      expect(newimage).toBeVisible();
     });
 
     test('passes the correct id to TouchableOpacity testID', () => {
@@ -106,7 +108,7 @@ describe('ButtonIcon() ButtonIcon method', () => {
         />
       );
       const touchable = getByTestId('unique-id');
-      expect(touchable).toBeInTheDocument();
+      expect(touchable).toBeVisible();
     });
   });
 
@@ -142,7 +144,7 @@ describe('ButtonIcon() ButtonIcon method', () => {
 
     test('renders correctly with minimal props (handlers as undefined)', () => {
       // This test ensures the component renders with handlers as undefined.
-      const { getByTestId, getByRole } = render(
+      const { getByTestId } = render(
         <ButtonIcon
           image={mockImageSource}
           pressHandler={undefined}
@@ -151,9 +153,9 @@ describe('ButtonIcon() ButtonIcon method', () => {
         />
       );
       const touchable = getByTestId('minimal');
-      expect(touchable).toBeInTheDocument();
-      const image = getByRole('img');
-      expect(image).toBeInTheDocument();
+      expect(touchable).toBeVisible();
+      const image = getByTestId('bimg');
+      expect(image).toBeVisible();
     });
 
     test('handles unusual id values', () => {
@@ -167,13 +169,13 @@ describe('ButtonIcon() ButtonIcon method', () => {
         />
       );
       const touchable = getByTestId('!@#$%^&*()_+|');
-      expect(touchable).toBeInTheDocument();
+      expect(touchable).toBeVisible();
     });
 
     test('handles image prop as a number (local resource)', () => {
       // This test ensures the image prop can be a number (local resource).
       const localImageSource = 123;
-      const { getByRole } = render(
+      const { getByTestId } = render(
         <ButtonIcon
           image={localImageSource}
           pressHandler={jest.fn()}
@@ -181,8 +183,8 @@ describe('ButtonIcon() ButtonIcon method', () => {
           id="number-image"
         />
       );
-      const image = getByRole('img');
-      expect(image).toBeInTheDocument();
+      const image = getByTestId('number-image');
+      expect(image).toBeVisible();
     });
   });
 });

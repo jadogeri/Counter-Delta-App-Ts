@@ -1,5 +1,4 @@
 import { StyleProp, Text, TextStyle, View } from 'react-native'
-import React from 'react'
 import styles from './CountIconStyle'
 
 type CountType ={

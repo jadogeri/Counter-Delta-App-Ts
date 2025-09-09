@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
+      "jsx": "react-jsx",
     "target": "es5",
-    "module": "esnext",
-    "types": ["jest", "node",],
+      "types": [ "node", "jest" ],
+      "typeRoots": ["node_modules/@types"],
+     "moduleResolution": "node",
     "strict": true,
+    "esModuleInterop": true
+    
  },
-  "include": ["src"]
+      "include": ["src/**/*.tsx", "tests/**/*.tsx","src/**/*.ts", "tests/**/*.ts"], // Example: include source and test files
+      "exclude": ["node_modules"] // Example: exclude node_modules
 }

@@ -3,6 +3,10 @@ import { testAction1, testAction2, testAction3, testAction4, testAction5, testAc
 from '../__mocks__/mocks';
 
 
+/**
+ * @jest-environment jsdom
+ */
+// the above comment helps
 describe("countReducer",() =>{
     
     it("increases count by 1 ", () =>{
