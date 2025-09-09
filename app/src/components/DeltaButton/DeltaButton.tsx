@@ -1,6 +1,6 @@
 import { Button,Text } from 'react-native-paper'
 import React from 'react';
-import {  GestureResponderEvent, Image } from 'react-native';
+import {  GestureResponderEvent} from 'react-native';
 import styles from './DeltaButtonStyle'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -21,7 +21,9 @@ type DeltaButtonProp ={
  * @returns {JSX.Element} The rendered button component.
  * @throws {Error} Throws an error if pressHandler is not a function.
  */
-const DeltaButton : React.FC<DeltaButtonProp>= ({sign,color,pressHandler,id}) => {
+
+
+const DeltaButton : React.FC<DeltaButtonProp> = ({sign,color,pressHandler,id}) => {
   return (
     
     <Button 
